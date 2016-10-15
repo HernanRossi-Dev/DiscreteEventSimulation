@@ -7,7 +7,7 @@ public class Launch {
 
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        System.out.println("Choose operation: press 1 to calculate a probability distibution");
+        System.out.println("Choose operation: press 1 to calculate a probability distribution");
         int n = in.nextInt();
         if(n == 1){
             getBinomialDistribution();
