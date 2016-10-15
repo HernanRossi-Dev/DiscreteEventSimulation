@@ -55,7 +55,7 @@ public class BinomialDistribution {
         for(int i = 1; i <= n; i++){
             BigInteger bi = BigInteger.valueOf(i);
             factorial = factorial.multiply(bi);
-            System.out.println("factorial is: " + factorial);
+            //System.out.println("factorial is: " + factorial);
         }
         return factorial;
     }

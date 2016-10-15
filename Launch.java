@@ -7,7 +7,7 @@ public class Launch {
 
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        System.out.println("Chose operation: press 1 to calculate a probability distibution");
+        System.out.println("Choose operation: press 1 to calculate a probability distibution");
         int n = in.nextInt();
         if(n == 1){
             getBinomialDistribution();
@@ -25,8 +25,10 @@ public class Launch {
         while(cont == 1) {
             System.out.println("What is the value of x that you would like to calculate for P( X <= x)? ");
             int x = in.nextInt();
-            System.out.print("Value is: " + bd.run(x));
-
+            double result = bd.run(x);
+            System.out.println("Value is: " + result);
+            System.out.println("The expected value E(X) is: " + n*p);
+            System.out.println("The the variance V(X) is: " + n*p*(1-p));
             System.out.println("press 1 to do another trial or 2 to exit: ");
             int choice = in.nextInt();
             if(choice != 1 ){
