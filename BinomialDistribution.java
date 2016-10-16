@@ -8,10 +8,12 @@ public class BinomialDistribution {
     private int n;
     private BigInteger n_factorial;
     private double p;
+    private Factorial calc_factorial;
     BinomialDistribution(int nin, double pin) {
         n = nin;
         p = pin;
-        n_factorial = calculateFactorial(n);
+        calc_factorial = new Factorial();
+        n_factorial = calc_factorial.getFactorial(n);
 
     }
 
@@ -27,10 +29,10 @@ public class BinomialDistribution {
         //run summation operation
         for(int i =0 ; i <=x ; i++) {
 
-            BigInteger x_factorial = calculateFactorial(i);
+            BigInteger x_factorial = calc_factorial.getFactorial(i);
             System.out.println(" x factorial is: " + x_factorial);
             System.out.println("n and i are: " + n + " " + i);
-            BigInteger k_factorial = calculateFactorial(n - i);
+            BigInteger k_factorial = calc_factorial.getFactorial(n-i);
             System.out.println("k factorial is: " + k_factorial);
             BigInteger choose =  n_factorial.divide( (x_factorial.multiply(k_factorial)));
             double p_to_x = Math.pow(p, i);
@@ -40,25 +42,7 @@ public class BinomialDistribution {
         return 1-result;
     }
 
-    /**************************************************************************
-     *                      calculateFactorial(n)
-     *                      Calculate the factorial of the input n
-     * @param n
-     * @return
-     */
-    public BigInteger calculateFactorial(int n) {
-        System.out.println("n is: " + n);
-        if(n == 0){
-            return new BigInteger("1");
-        }
-        BigInteger factorial = new BigInteger("1");
-        for(int i = 1; i <= n; i++){
-            BigInteger bi = BigInteger.valueOf(i);
-            factorial = factorial.multiply(bi);
-            //System.out.println("factorial is: " + factorial);
-        }
-        return factorial;
-    }
+
     // Program getters
     public int getN(){
         return this.n;
@@ -71,7 +55,7 @@ public class BinomialDistribution {
     //program setters
     public void setN(int nin){
         this.n = nin;
-        this.n_factorial = calculateFactorial(n);
+        this.n_factorial = calc_factorial.getFactorial(n);
     }
     public void setP(int pin){
         this.p = pin;
